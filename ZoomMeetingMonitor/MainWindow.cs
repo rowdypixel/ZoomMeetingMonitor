@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Sleddog.Blink1;
+using ZoomMeetingMonitor.Properties;
 
 namespace ZoomMeetingMonitor
 {
@@ -21,12 +22,7 @@ namespace ZoomMeetingMonitor
 
         private void bgwCheckForZoom_DoWork(object sender, DoWorkEventArgs e)
         {
-
-            var connected = Blink1Connector.Scan();
-            var blink = connected.ToArray()[0] as Blink1;
-
-            var foundZoom = false;
-
+           var foundZoom = false;
             Process[] processlist = Process.GetProcesses();
             foreach (Process process in processlist)
             {
@@ -40,9 +36,9 @@ namespace ZoomMeetingMonitor
                 }
             }
             if (foundZoom)
-                blink.Set(Color.Red);
+                BlinkHelper.SetBlinkColor(Settings.Default.LightColor);
             else
-                blink.TurnOff();
+                BlinkHelper.TurnOff();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -50,6 +46,7 @@ namespace ZoomMeetingMonitor
             tmrCheckForChanges.Start();
             this.WindowState = FormWindowState.Minimized;
             icoTray.ShowBalloonTip(3000, "Online Meeting Monitor", "Monitoring your computer for Zoom Meetings.", ToolTipIcon.Info);
+            pnlColor.BackColor = Settings.Default.LightColor;
         }
 
         private void tmrCheckForChanges_Tick(object sender, EventArgs e)
@@ -77,8 +74,6 @@ namespace ZoomMeetingMonitor
         private void btnToggleLight_Click(object sender, EventArgs e)
         {
             string turnOnText = "Set in Meeting";
-            var connected = Blink1Connector.Scan();
-            var blink = connected.ToArray()[0] as Blink1;
             if (btnToggleLight.Text == turnOnText)
             {
                 tmrCheckForChanges.Stop();
@@ -86,17 +81,27 @@ namespace ZoomMeetingMonitor
                 {
                     Application.DoEvents();
                 }
-                blink.Set(Color.Red);
+                BlinkHelper.SetBlinkColor(Settings.Default.LightColor);
                 btnToggleLight.Text = "End Meeting";
             }
             else
             {
                 tmrCheckForChanges.Start();
-                blink.TurnOff();
+                BlinkHelper.TurnOff();
                 btnToggleLight.Text = turnOnText;
             }
             
 
+        }
+
+        private void btnChangeColor_Click(object sender, EventArgs e)
+        {
+            if(colorNotificationLight.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.LightColor = colorNotificationLight.Color;
+                Properties.Settings.Default.Save();
+                pnlColor.BackColor = Properties.Settings.Default.LightColor;
+            }
         }
     }
 }
