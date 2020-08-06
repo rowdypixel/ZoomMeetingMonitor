@@ -34,5 +34,41 @@ namespace ZoomMeetingMonitor.Properties {
                 this["LightColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string LifxIpAddress {
+            get {
+                return ((string)(this["LifxIpAddress"]));
+            }
+            set {
+                this["LifxIpAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseBlink1 {
+            get {
+                return ((bool)(this["UseBlink1"]));
+            }
+            set {
+                this["UseBlink1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseLifx {
+            get {
+                return ((bool)(this["UseLifx"]));
+            }
+            set {
+                this["UseLifx"] = value;
+            }
+        }
     }
 }

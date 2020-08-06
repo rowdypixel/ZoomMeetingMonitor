@@ -40,6 +40,10 @@
             this.btnChangeColor = new System.Windows.Forms.Button();
             this.pnlColor = new System.Windows.Forms.Panel();
             this.grpNotifications = new System.Windows.Forms.GroupBox();
+            this.btnSaveLifxIpAddress = new System.Windows.Forms.Button();
+            this.txtLifxIpAddress = new System.Windows.Forms.MaskedTextBox();
+            this.chkLifx = new System.Windows.Forms.CheckBox();
+            this.chkBlink = new System.Windows.Forms.CheckBox();
             this.grpOverride.SuspendLayout();
             this.grpNotifications.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +80,7 @@
             this.grpOverride.Controls.Add(this.btnToggleLight);
             this.grpOverride.Location = new System.Drawing.Point(12, 12);
             this.grpOverride.Name = "grpOverride";
-            this.grpOverride.Size = new System.Drawing.Size(220, 118);
+            this.grpOverride.Size = new System.Drawing.Size(220, 248);
             this.grpOverride.TabIndex = 1;
             this.grpOverride.TabStop = false;
             this.grpOverride.Text = "Detection Override";
@@ -92,7 +96,7 @@
             // 
             // btnChangeColor
             // 
-            this.btnChangeColor.Location = new System.Drawing.Point(33, 29);
+            this.btnChangeColor.Location = new System.Drawing.Point(74, 52);
             this.btnChangeColor.Name = "btnChangeColor";
             this.btnChangeColor.Size = new System.Drawing.Size(120, 23);
             this.btnChangeColor.TabIndex = 2;
@@ -102,27 +106,71 @@
             // 
             // pnlColor
             // 
-            this.pnlColor.Location = new System.Drawing.Point(6, 29);
+            this.pnlColor.Location = new System.Drawing.Point(47, 52);
             this.pnlColor.Name = "pnlColor";
             this.pnlColor.Size = new System.Drawing.Size(21, 23);
             this.pnlColor.TabIndex = 3;
             // 
             // grpNotifications
             // 
+            this.grpNotifications.Controls.Add(this.btnSaveLifxIpAddress);
+            this.grpNotifications.Controls.Add(this.txtLifxIpAddress);
+            this.grpNotifications.Controls.Add(this.chkLifx);
+            this.grpNotifications.Controls.Add(this.chkBlink);
             this.grpNotifications.Controls.Add(this.pnlColor);
             this.grpNotifications.Controls.Add(this.btnChangeColor);
             this.grpNotifications.Location = new System.Drawing.Point(238, 12);
             this.grpNotifications.Name = "grpNotifications";
-            this.grpNotifications.Size = new System.Drawing.Size(200, 118);
+            this.grpNotifications.Size = new System.Drawing.Size(200, 248);
             this.grpNotifications.TabIndex = 4;
             this.grpNotifications.TabStop = false;
             this.grpNotifications.Text = "Notification Settings";
+            // 
+            // btnSaveLifxIpAddress
+            // 
+            this.btnSaveLifxIpAddress.Location = new System.Drawing.Point(113, 109);
+            this.btnSaveLifxIpAddress.Name = "btnSaveLifxIpAddress";
+            this.btnSaveLifxIpAddress.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveLifxIpAddress.TabIndex = 7;
+            this.btnSaveLifxIpAddress.Text = "Set IP";
+            this.btnSaveLifxIpAddress.UseVisualStyleBackColor = true;
+            this.btnSaveLifxIpAddress.Click += new System.EventHandler(this.btnSaveLifxIpAddress_Click);
+            // 
+            // txtLifxIpAddress
+            // 
+            this.txtLifxIpAddress.Location = new System.Drawing.Point(7, 112);
+            this.txtLifxIpAddress.Mask = "000.000.000.000";
+            this.txtLifxIpAddress.Name = "txtLifxIpAddress";
+            this.txtLifxIpAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtLifxIpAddress.TabIndex = 6;
+            // 
+            // chkLifx
+            // 
+            this.chkLifx.AutoSize = true;
+            this.chkLifx.Location = new System.Drawing.Point(6, 89);
+            this.chkLifx.Name = "chkLifx";
+            this.chkLifx.Size = new System.Drawing.Size(92, 17);
+            this.chkLifx.TabIndex = 5;
+            this.chkLifx.Text = "Use LIFX light";
+            this.chkLifx.UseVisualStyleBackColor = true;
+            this.chkLifx.CheckedChanged += new System.EventHandler(this.NotificationType_CheckedChanged);
+            // 
+            // chkBlink
+            // 
+            this.chkBlink.AutoSize = true;
+            this.chkBlink.Location = new System.Drawing.Point(7, 29);
+            this.chkBlink.Name = "chkBlink";
+            this.chkBlink.Size = new System.Drawing.Size(109, 17);
+            this.chkBlink.TabIndex = 4;
+            this.chkBlink.Text = "Use Blink(1) Light";
+            this.chkBlink.UseVisualStyleBackColor = true;
+            this.chkBlink.CheckedChanged += new System.EventHandler(this.NotificationType_CheckedChanged);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 154);
+            this.ClientSize = new System.Drawing.Size(533, 272);
             this.Controls.Add(this.grpNotifications);
             this.Controls.Add(this.grpOverride);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -134,6 +182,7 @@
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.grpOverride.ResumeLayout(false);
             this.grpNotifications.ResumeLayout(false);
+            this.grpNotifications.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -150,6 +199,10 @@
         private System.Windows.Forms.Button btnChangeColor;
         private System.Windows.Forms.Panel pnlColor;
         private System.Windows.Forms.GroupBox grpNotifications;
+        private System.Windows.Forms.CheckBox chkLifx;
+        private System.Windows.Forms.CheckBox chkBlink;
+        private System.Windows.Forms.Button btnSaveLifxIpAddress;
+        private System.Windows.Forms.MaskedTextBox txtLifxIpAddress;
     }
 }
 

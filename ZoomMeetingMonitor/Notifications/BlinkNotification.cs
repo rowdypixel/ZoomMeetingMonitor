@@ -6,14 +6,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZoomMeetingMonitor
+namespace ZoomMeetingMonitor.Notifications
 {
+    public class BlinkNotification : INotification
+    {
+        public void OnMeetingEnd()
+        {
+            BlinkHelper.TurnOff();
+        }
+
+        public void OnMeetingStart(Color notificationColor)
+        {
+            BlinkHelper.SetBlinkColor(notificationColor);
+        }
+    }
+
     public static class BlinkHelper
     {
         public static void SetBlinkColor(Color color)
         {
             var connected = Blink1Connector.Scan();
-            foreach(Blink1 blink in connected.ToArray())
+            foreach (Blink1 blink in connected.ToArray())
             {
                 blink.Set(color);
             }

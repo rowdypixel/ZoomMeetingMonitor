@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using Sleddog.Blink1;
 using ZoomMeetingMonitor.Properties;
+using ZoomMeetingMonitor.Notifications;
 
 namespace ZoomMeetingMonitor
 {
@@ -36,9 +37,13 @@ namespace ZoomMeetingMonitor
                 }
             }
             if (foundZoom)
-                BlinkHelper.SetBlinkColor(Settings.Default.LightColor);
+            {
+                SendNotifications();
+            }
             else
-                BlinkHelper.TurnOff();
+            {
+                StopNotifications();
+            }
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -81,13 +86,13 @@ namespace ZoomMeetingMonitor
                 {
                     Application.DoEvents();
                 }
-                BlinkHelper.SetBlinkColor(Settings.Default.LightColor);
+                SendNotifications();
                 btnToggleLight.Text = "End Meeting";
             }
             else
             {
                 tmrCheckForChanges.Start();
-                BlinkHelper.TurnOff();
+                StopNotifications();
                 btnToggleLight.Text = turnOnText;
             }
             
@@ -97,11 +102,54 @@ namespace ZoomMeetingMonitor
         private void btnChangeColor_Click(object sender, EventArgs e)
         {
             if(colorNotificationLight.ShowDialog() == DialogResult.OK)
-            {
-                Properties.Settings.Default.LightColor = colorNotificationLight.Color;
-                Properties.Settings.Default.Save();
-                pnlColor.BackColor = Properties.Settings.Default.LightColor;
+            { 
+                pnlColor.BackColor = colorNotificationLight.Color;
+                SaveSettings();
             }
+        }
+
+        private void BindSettings()
+        {
+            txtLifxIpAddress.Text = Properties.Settings.Default.LifxIpAddress;
+            pnlColor.BackColor = Properties.Settings.Default.LightColor;
+            chkBlink.Checked = Properties.Settings.Default.UseBlink1;
+            chkLifx.Checked = Properties.Settings.Default.UseLifx;
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.LifxIpAddress  = txtLifxIpAddress.Text;
+            Properties.Settings.Default.LightColor = pnlColor.BackColor;
+            Properties.Settings.Default.UseBlink1 = chkBlink.Checked;
+            Properties.Settings.Default.UseLifx = chkLifx.Checked;
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void SendNotifications()
+        {
+            if (Properties.Settings.Default.UseBlink1)
+                new BlinkNotification().OnMeetingStart(Properties.Settings.Default.LightColor);
+            if (Properties.Settings.Default.UseLifx)
+                new LifxNotification().OnMeetingStart(Properties.Settings.Default.LightColor);
+        }
+
+        private void StopNotifications()
+        {
+            if (Properties.Settings.Default.UseBlink1)
+                new BlinkNotification().OnMeetingEnd();
+            if (Properties.Settings.Default.UseLifx)
+                new LifxNotification().OnMeetingEnd();
+        }
+
+        private void NotificationType_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void btnSaveLifxIpAddress_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
         }
     }
 }
