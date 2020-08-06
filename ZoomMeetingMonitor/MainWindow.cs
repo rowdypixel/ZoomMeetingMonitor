@@ -51,7 +51,7 @@ namespace ZoomMeetingMonitor
             tmrCheckForChanges.Start();
             this.WindowState = FormWindowState.Minimized;
             icoTray.ShowBalloonTip(3000, "Online Meeting Monitor", "Monitoring your computer for Zoom Meetings.", ToolTipIcon.Info);
-            pnlColor.BackColor = Settings.Default.LightColor;
+            BindSettings();
         }
 
         private void tmrCheckForChanges_Tick(object sender, EventArgs e)
