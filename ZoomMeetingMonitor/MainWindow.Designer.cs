@@ -55,6 +55,7 @@
             // 
             // tmrCheckForChanges
             // 
+            this.tmrCheckForChanges.Interval = 5000;
             this.tmrCheckForChanges.Tick += new System.EventHandler(this.tmrCheckForChanges_Tick);
             // 
             // icoTray
@@ -66,9 +67,10 @@
             // 
             // btnToggleLight
             // 
-            this.btnToggleLight.Location = new System.Drawing.Point(97, 89);
+            this.btnToggleLight.Location = new System.Drawing.Point(146, 137);
+            this.btnToggleLight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnToggleLight.Name = "btnToggleLight";
-            this.btnToggleLight.Size = new System.Drawing.Size(116, 23);
+            this.btnToggleLight.Size = new System.Drawing.Size(174, 35);
             this.btnToggleLight.TabIndex = 0;
             this.btnToggleLight.Text = "Set in Meeting";
             this.btnToggleLight.UseVisualStyleBackColor = true;
@@ -78,27 +80,31 @@
             // 
             this.grpOverride.Controls.Add(this.lblOverrideInstructions);
             this.grpOverride.Controls.Add(this.btnToggleLight);
-            this.grpOverride.Location = new System.Drawing.Point(12, 12);
+            this.grpOverride.Location = new System.Drawing.Point(18, 18);
+            this.grpOverride.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpOverride.Name = "grpOverride";
-            this.grpOverride.Size = new System.Drawing.Size(220, 248);
+            this.grpOverride.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpOverride.Size = new System.Drawing.Size(330, 382);
             this.grpOverride.TabIndex = 1;
             this.grpOverride.TabStop = false;
             this.grpOverride.Text = "Detection Override";
             // 
             // lblOverrideInstructions
             // 
-            this.lblOverrideInstructions.Location = new System.Drawing.Point(1, 20);
+            this.lblOverrideInstructions.Location = new System.Drawing.Point(2, 31);
+            this.lblOverrideInstructions.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOverrideInstructions.Name = "lblOverrideInstructions";
-            this.lblOverrideInstructions.Size = new System.Drawing.Size(212, 66);
+            this.lblOverrideInstructions.Size = new System.Drawing.Size(318, 102);
             this.lblOverrideInstructions.TabIndex = 1;
             this.lblOverrideInstructions.Text = "This button will stop the meeting detection and turn on notifications. Press the " +
     "button again to resume automatic detection.";
             // 
             // btnChangeColor
             // 
-            this.btnChangeColor.Location = new System.Drawing.Point(74, 52);
+            this.btnChangeColor.Location = new System.Drawing.Point(111, 80);
+            this.btnChangeColor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChangeColor.Name = "btnChangeColor";
-            this.btnChangeColor.Size = new System.Drawing.Size(120, 23);
+            this.btnChangeColor.Size = new System.Drawing.Size(180, 35);
             this.btnChangeColor.TabIndex = 2;
             this.btnChangeColor.Text = "Choose Light Color";
             this.btnChangeColor.UseVisualStyleBackColor = true;
@@ -106,9 +112,10 @@
             // 
             // pnlColor
             // 
-            this.pnlColor.Location = new System.Drawing.Point(47, 52);
+            this.pnlColor.Location = new System.Drawing.Point(70, 80);
+            this.pnlColor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlColor.Name = "pnlColor";
-            this.pnlColor.Size = new System.Drawing.Size(21, 23);
+            this.pnlColor.Size = new System.Drawing.Size(32, 35);
             this.pnlColor.TabIndex = 3;
             // 
             // grpNotifications
@@ -119,18 +126,21 @@
             this.grpNotifications.Controls.Add(this.chkBlink);
             this.grpNotifications.Controls.Add(this.pnlColor);
             this.grpNotifications.Controls.Add(this.btnChangeColor);
-            this.grpNotifications.Location = new System.Drawing.Point(238, 12);
+            this.grpNotifications.Location = new System.Drawing.Point(357, 18);
+            this.grpNotifications.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpNotifications.Name = "grpNotifications";
-            this.grpNotifications.Size = new System.Drawing.Size(200, 248);
+            this.grpNotifications.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpNotifications.Size = new System.Drawing.Size(300, 382);
             this.grpNotifications.TabIndex = 4;
             this.grpNotifications.TabStop = false;
             this.grpNotifications.Text = "Notification Settings";
             // 
             // btnSaveLifxIpAddress
             // 
-            this.btnSaveLifxIpAddress.Location = new System.Drawing.Point(113, 109);
+            this.btnSaveLifxIpAddress.Location = new System.Drawing.Point(170, 168);
+            this.btnSaveLifxIpAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSaveLifxIpAddress.Name = "btnSaveLifxIpAddress";
-            this.btnSaveLifxIpAddress.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveLifxIpAddress.Size = new System.Drawing.Size(112, 35);
             this.btnSaveLifxIpAddress.TabIndex = 7;
             this.btnSaveLifxIpAddress.Text = "Set IP";
             this.btnSaveLifxIpAddress.UseVisualStyleBackColor = true;
@@ -138,18 +148,20 @@
             // 
             // txtLifxIpAddress
             // 
-            this.txtLifxIpAddress.Location = new System.Drawing.Point(7, 112);
+            this.txtLifxIpAddress.Location = new System.Drawing.Point(10, 172);
+            this.txtLifxIpAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLifxIpAddress.Mask = "000.000.000.000";
             this.txtLifxIpAddress.Name = "txtLifxIpAddress";
-            this.txtLifxIpAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtLifxIpAddress.Size = new System.Drawing.Size(148, 26);
             this.txtLifxIpAddress.TabIndex = 6;
             // 
             // chkLifx
             // 
             this.chkLifx.AutoSize = true;
-            this.chkLifx.Location = new System.Drawing.Point(6, 89);
+            this.chkLifx.Location = new System.Drawing.Point(9, 137);
+            this.chkLifx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkLifx.Name = "chkLifx";
-            this.chkLifx.Size = new System.Drawing.Size(92, 17);
+            this.chkLifx.Size = new System.Drawing.Size(129, 24);
             this.chkLifx.TabIndex = 5;
             this.chkLifx.Text = "Use LIFX light";
             this.chkLifx.UseVisualStyleBackColor = true;
@@ -158,9 +170,10 @@
             // chkBlink
             // 
             this.chkBlink.AutoSize = true;
-            this.chkBlink.Location = new System.Drawing.Point(7, 29);
+            this.chkBlink.Location = new System.Drawing.Point(10, 45);
+            this.chkBlink.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkBlink.Name = "chkBlink";
-            this.chkBlink.Size = new System.Drawing.Size(109, 17);
+            this.chkBlink.Size = new System.Drawing.Size(153, 24);
             this.chkBlink.TabIndex = 4;
             this.chkBlink.Text = "Use Blink(1) Light";
             this.chkBlink.UseVisualStyleBackColor = true;
@@ -168,13 +181,14 @@
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 272);
+            this.ClientSize = new System.Drawing.Size(800, 418);
             this.Controls.Add(this.grpNotifications);
             this.Controls.Add(this.grpOverride);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Online Meeting Monitor";
